@@ -128,6 +128,12 @@ body {
 .intro {
   font-size: 20px;
   font-family: monospace;
+  width: 70%;
+  margin: 15px auto;
+}
+
+.rules {
+  text-align: justify;
 }
 
 .homepage1, .homepage2 {
@@ -135,6 +141,7 @@ body {
   padding-top: 20px;
   width: 60%;
   margin: auto;
+  font-family: monospace;
 }
 
 .highScoreCalcType {
