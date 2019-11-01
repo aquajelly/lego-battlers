@@ -1,0 +1,255 @@
+body {
+  background-color: rgb(2, 212, 167);
+}
+
+.header {
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  background-color: rgb(122, 159, 240);
+}
+
+.footer {
+  text-align: center;
+  border-top: 2px solid black;
+}
+
+.content, .homeButton {
+  text-align: center;
+}
+
+.buttons {
+  width: 100%;
+  margin: auto;
+  font-size: 20px;
+  margin: 20px 0px;
+  font-family: arial;
+}
+
+.gameType {
+  background-color: rgb(208, 241, 158);
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.upperDisplayElementsContainer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin: auto;
+  display: flex
+}
+
+.upperDisplayElements {
+  width: 30%;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  margin: auto;
+  margin-top: 20px
+}
+
+.gameClass {
+  background-color: white;
+  border: 5px solid black;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.answerArea {
+  margin: auto;
+  height: 1em;
+  padding: 0.2em;
+  width: 80%;
+  text-align: center;
+  background-color: rgb(2, 212, 167);
+  border: 3px solid black;
+}
+
+.answerButtons {
+  background-color: rgb(208, 241, 158);
+  border: 2px solid black;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.deleteButton {
+  background-color: red;
+  border: 2px solid black;
+  font-size: 20px;
+  height: 40px;
+  width: 210px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.clearButton {
+  background-color: black;
+  color: red;
+  border: 2px solid black;
+  font-size: 20px;
+  height: 40px;
+  width: 210px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.gameType:hover, .answerButtons:hover {
+  background-color: rgb(242, 123, 64);
+  color: white;
+}
+
+.deleteButton:hover, .clearButton:hover {
+  background-color: rgb(240, 145, 20);
+  color: black;
+}
+
+.intro {
+  font-size: 20px;
+}
+
+.homepage1, .homepage2 {
+  border-top: 2px white solid;
+  padding-top: 20px;
+  width: 60%;
+  margin: auto;
+}
+
+.highScoreCalcType {
+  width: 90%;
+  display: flex;
+  margin: auto;
+  border-top: 3px white solid;
+  border-bottom: 3px white solid;
+}
+
+.difficultySeparatorLeft {
+  border-right: 1px white solid;
+}
+
+.difficultySeparatorCentre, .difficultySeparatorLeft, .difficultySeparatorRight {
+  width: 30%;
+  margin: auto;
+}
+
+.difficultySeparatorRight {
+  border-left: 1px white solid;
+}
+
+.difficultyTitle {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.finalScore {
+  margin-bottom: 16px;
+}
+
+.howToPlay {
+  width: 80%;
+  margin: auto;
+}
+
+.whiteText {
+  color: white;
+}
+
+::placeholder {
+  color: black;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.disappear {
+  opacity: 0;
+}
+
+.disappear.fadeIn {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+@media screen and (max-width: 500px) {
+  .header-title {
+    width: 100%;
+    font-size: 6vw;
+  }
+  .intro {
+    font-size: 5vw;
+  }
+  .homepage1, .homepage2 {
+    font-size: 4vw;
+  }
+  .gameType {
+    width: 50%;
+    font-size: 4vw;
+  }
+  .footer-title {
+    font-size: 5vw;
+  }
+  .difficultyTitle {
+    font-size: 3vw;
+  }
+  .scoresDisplay {
+    font-size: 2vw;
+  }
+  .gameClass, .gameHeaders {
+    width: 90%;
+  }
+  .answerButtons {
+    width: 20%;
+    height: 10vw;
+    font-size: 4vw;
+    padding: 0px;
+    margin: 1vw;
+  }
+  .deleteButton, .clearButton {
+    width: 42%;
+    height: 10vw;
+    font-size: 4vw;
+    padding: 0px;
+    margin: 1vw;
+  }
+  .gameType:hover, .answerButtons:hover {
+    background-color: rgb(208, 241, 158);
+    color: black;
+  }
+  .deleteButton:hover {
+    background-color: red;
+    color: black;
+  }
+  .clearButton:hover {
+    background-color: black;
+    color: red;
+  }
+  .gameType:active, .answerButtons:active {
+    background-color: rgb(242, 123, 64);
+    color: white;
+  }
+  .deleteButton:active, .clearButton:active {
+    background-color: rgb(240, 145, 20);
+    color: black;
+  }
+}
