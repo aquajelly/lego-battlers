@@ -1,17 +1,23 @@
 body {
-  background-color: rgb(2, 212, 167);
+  background-color: rgb(49, 218, 247);
 }
 
 .header {
   text-align: center;
   border: 5px solid black;
-  border-radius: 10px;
-  background-color: rgb(122, 159, 240);
+  border-radius: 20px;
+  background-color: rgb(221, 247, 11);
+  font-family: monospace;
+  width: 40%;
+  margin: auto;
 }
 
 .footer {
+  width: 50%;
+  margin: auto;
   text-align: center;
-  border-top: 2px solid black;
+  border-top: 1px solid black;
+  font-family: monospace;
 }
 
 .content, .homeButton {
@@ -19,21 +25,22 @@ body {
 }
 
 .buttons {
-  width: 100%;
-  margin: auto;
+  width: 30%;
   font-size: 20px;
-  margin: 20px 0px;
-  font-family: arial;
+  margin: 20px auto;
+  font-family: monospace;
 }
 
 .gameType {
-  background-color: rgb(208, 241, 158);
+  background-color: rgb(64, 21, 232);
   border: 2px solid black;
   font-size: 20px;
   padding: 10px;
   width: 200px;
   text-align: center;
-  margin-bottom: 5px;
+  border-radius: 20px;
+  margin: 15px 0px;
+  color: white;
 }
 
 .upperDisplayElementsContainer {
@@ -109,8 +116,8 @@ body {
 }
 
 .gameType:hover, .answerButtons:hover {
-  background-color: rgb(242, 123, 64);
-  color: white;
+  background-color: rgb(218, 57, 232);
+  color: black;
 }
 
 .deleteButton:hover, .clearButton:hover {
@@ -120,6 +127,7 @@ body {
 
 .intro {
   font-size: 20px;
+  font-family: monospace;
 }
 
 .homepage1, .homepage2 {
