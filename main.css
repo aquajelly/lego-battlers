@@ -268,3 +268,18 @@ button:focus {
     color: black;
   }
 }
+
+.cardDisplayClass {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.card {
+  background: orange;
+  width: 200px;
+  font-family: monospace;
+}
+
+.stat {
+  padding-bottom: 5px;
+}
