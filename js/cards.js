@@ -1,81 +1,132 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const allCardsDisplay = document.createElement('div');
-  allCardsDisplay.className = 'cardDisplayClass';
+  allCardsDisplay.className = 'cardDisplay';
 
-  cardCreation = () => {
+  cardCreation = (imageSource, cardNameContent, attackValue, defenceValue, speedValue,
+     stealthValue, strengthValue) => {
 
     imageSetup = () => {
       const image = document.createElement('img');
-      image.setAttribute('src', '../images/favicon.ico');
-      image.setAttribute('width', '100px');
-      image.setAttribute('heigh', '100px');
+      image.className = 'image';
+      image.setAttribute('src', imageSource);
       card.appendChild(image);
     }
 
     nameSetup = () => {
       const cardName = document.createElement('p');
-      cardName.innerHTML = 'Test Card Number 1';
+      cardName.innerHTML = cardNameContent;
+      cardName.className = 'cardName';
       cardName.style.fontWeight = 'bold';
       cardName.style.fontSize = '110%';
-      card.appendChild(cardName);
+      textArea.appendChild(cardName);
     }
 
-    statsSetup = (card) => {
+    statsSetup = (textArea, attackValue, defenceValue, speedValue,
+       stealthValue, strengthValue) => {
 
       attackSetup = () => {
         const attack = document.createElement('p');
         attack.className = 'stat';
-        attack.innerHTML = 'Attack: 1';
-        card.appendChild(attack);
+        attack.innerHTML = 'Attack:';
+        textArea.appendChild(attack);
+
+        const attackStat = document.createElement('p');
+        attackStat.className = 'statValue';
+        attackStat.innerHTML = attackValue;
+        textArea.appendChild(attackStat);
       }
 
       defenceSetup = () => {
         const defence = document.createElement('p');
         defence.className = 'stat';
-        defence.innerHTML = 'Defence: 2';
-        card.appendChild(defence);
+        defence.innerHTML = 'Defence:';
+        textArea.appendChild(defence);
+
+        const defenceStat = document.createElement('p');
+        defenceStat.className = 'statValue';
+        defenceStat.innerHTML = defenceValue;
+        textArea.appendChild(defenceStat);
       }
 
       speedSetup = () => {
         const speed = document.createElement('p');
         speed.className = 'stat';
-        speed.innerHTML = 'Speed: 3';
-        card.appendChild(speed);
+        speed.innerHTML = 'Speed:';
+        textArea.appendChild(speed);
+
+        const speedStat = document.createElement('p');
+        speedStat.className = 'statValue';
+        speedStat.innerHTML = speedValue;
+        textArea.appendChild(speedStat);
       }
 
       stealthSetup = () => {
         const stealth = document.createElement('p');
         stealth.className = 'stat';
-        stealth.innerHTML = 'Stealth: 4';
-        card.appendChild(stealth);
+        stealth.innerHTML = 'Stealth:';
+        textArea.appendChild(stealth);
+
+        const stealthStat = document.createElement('p');
+        stealthStat.className = 'statValue';
+        stealthStat.innerHTML = stealthValue;
+        textArea.appendChild(stealthStat);
       }
 
       strengthSetup = () => {
         const strength = document.createElement('p');
         strength.className = 'stat';
-        strength.innerHTML = 'Strength: 5';
-        card.appendChild(strength);
+        strength.innerHTML = 'Strength:';
+        textArea.appendChild(strength);
+
+        const strengthStat = document.createElement('p');
+        strengthStat.className = 'statValue';
+        strengthStat.innerHTML = strengthValue;
+        textArea.appendChild(strengthStat);
       }
 
-      attackSetup(card);
-      defenceSetup(card);
-      speedSetup(card);
-      stealthSetup(card);
-      strengthSetup(card);
+      attackSetup(card, attackValue);
+      defenceSetup(card, defenceValue);
+      speedSetup(card, speedValue);
+      stealthSetup(card, stealthValue);
+      strengthSetup(card, strengthValue);
 
     }
 
     const card = document.createElement('div');
     card.className = 'card';
 
-    imageSetup(card);
-    nameSetup(card);
-    statsSetup(card);
+    imageSetup(card, imageSource);
+
+    const textArea = document.createElement('div');
+    textArea.className = 'textArea';
+    card.appendChild(textArea);
+
+    nameSetup(textArea, cardNameContent);
+    statsSetup(textArea, attackValue, defenceValue, speedValue, stealthValue, strengthValue);
     allCardsDisplay.appendChild(card);
   }
 
-  cardCreation();
+  cardCreation('../images/20191102_132951.jpeg', 'Royal Footsoldier', 5, 6, 6, 4, 5);
+  cardCreation('../images/20191102_133046.jpeg', 'Royal Spearman', 6, 5, 4, 3, 6);
+  cardCreation('../images/20191102_133133.jpeg', 'Royal Archer', 6, 5, 7, 6, 5);
+  cardCreation('../images/20191102_133200.jpeg', 'Royal Knight', 7, 7, 2, 2, 8);
+  cardCreation('../images/20191102_133225.jpeg', 'Kingsguard', 8, 6, 6, 4, 7);
+  cardCreation('../images/20191102_133255.jpeg', 'The King', 9, 10, 3, 3, 9);
+  cardCreation('../images/20191102_134921.jpeg', 'Dragon Knight', 6, 4, 5, 6, 6);
+  cardCreation('../images/20191102_134904.jpeg', 'Dragon Archer', 7, 2, 8, 9, 5);
+  cardCreation('../images/20191102_134936.jpeg', 'Dragonguard', 8, 5, 5, 6, 7);
+  cardCreation('../images/20191102_135038.jpeg', 'The Dragonking', 10, 9, 2, 4, 9);
+  cardCreation('../images/20191102_134949.jpeg', 'Dark Ninja', 8, 2, 8, 10, 5);
+  cardCreation('../images/20191102_135005.jpeg', 'The Executioner', 7, 3, 7, 7, 6);
+  cardCreation('../images/20191102_134823.jpeg', 'Ogre Brute', 8, 1, 1, 2, 10);
+  cardCreation('../images/20191102_134957.jpeg', 'Assassin', 5, 2, 9, 9, 4);
+  cardCreation('../images/20191102_135026.jpeg', 'Distant Swordsman', 8, 8, 6, 5, 7);
+  cardCreation('../images/20191102_133442.jpeg', 'King\'s Horse', 2, 7, 10, 1, 7);
+  cardCreation('../images/20191102_135050.jpeg', 'Dragonsteed', 2, 4, 10, 2, 7);
+  cardCreation('../images/20191102_134213.jpeg', 'King on Horse', 8, 9, 10, 2, 8);
+  cardCreation('../images/20191102_135115.jpeg', 'Dragon on Steed', 9, 7, 10, 4, 8);
+  cardCreation('../images/20191102_135450-1.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
 
   const content = document.querySelector('.content');
   const homeButton = document.querySelector('.homepage2')

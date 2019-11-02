@@ -1,12 +1,12 @@
 body {
-  background-color: rgb(49, 218, 247);
+  background-color: rgb(221, 247, 11);
 }
 
 .header {
   text-align: center;
   border: 5px solid black;
   border-radius: 20px;
-  background-color: rgb(221, 247, 11);
+  background-color: rgb(49, 218, 247);
   font-family: monospace;
   width: 40%;
   margin: auto;
@@ -269,17 +269,59 @@ button:focus {
   }
 }
 
-.cardDisplayClass {
-  width: 60%;
+.cardDisplay {
+  width: 80%;
   margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .card {
-  background: orange;
+  background-image: url('images/istockphoto-541118196-612x612.jpg');
   width: 200px;
   font-family: monospace;
+  border-radius: 20px;
+  padding: 10px 0px;
+  margin: 10px;
+  border: 2px solid black;
+}
+
+.image {
+  height: 100px;
+  border: 5px solid black;
+}
+
+.textArea {
+  background: rgb(193, 194, 196);
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.cardName {
+  font-weight: bold;
+  padding: 5px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
 }
 
 .stat {
-  padding-bottom: 5px;
+  width: 40%;
+  display: inline-block;
+  text-align: justify;
+  padding: 5px;
+  margin: 0px;
+}
+
+.statValue {
+  width: 30%;
+  display: inline-block;
+  text-align: right;
+  padding: 5px;
+  margin: 0px;
 }
