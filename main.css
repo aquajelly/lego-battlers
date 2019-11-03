@@ -25,6 +25,13 @@ body {
 }
 
 .buttons {
+  width: 50%;
+  font-size: 20px;
+  margin: 20px auto;
+  font-family: monospace;
+}
+
+.homePageButtons {
   width: 30%;
   font-size: 20px;
   margin: 20px auto;
@@ -41,6 +48,10 @@ body {
   border-radius: 20px;
   margin: 15px 0px;
   color: white;
+}
+
+.resetScores {
+  background-color: red;
 }
 
 .upperDisplayElementsContainer {
@@ -136,7 +147,7 @@ body {
   text-align: justify;
 }
 
-.homepage1, .homepage2 {
+.homepage {
   border-top: 2px white solid;
   padding-top: 20px;
   width: 60%;
@@ -175,12 +186,8 @@ body {
 }
 
 .howToPlay {
-  width: 80%;
+  width: 100%;
   margin: auto;
-}
-
-.whiteText {
-  color: white;
 }
 
 ::placeholder {
@@ -197,13 +204,10 @@ button:focus {
   outline: 0;
 }
 
-.disappear {
-  opacity: 0;
-}
-
-.disappear.fadeIn {
-  opacity: 1;
-  transition: opacity 1s;
+@media screen and (max-width: 700px) {
+  .homePageButtons {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -214,7 +218,7 @@ button:focus {
   .intro {
     font-size: 5vw;
   }
-  .homepage1, .homepage2 {
+  .homepage {
     font-size: 4vw;
   }
   .gameType {
@@ -324,4 +328,147 @@ button:focus {
   text-align: right;
   padding: 5px;
   margin: 0px;
+}
+
+.gameDisplay {
+  background: blue;
+  width: 90%;
+  height: 400px;
+  margin: 20px auto;
+  border: 3px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.beginButton {
+  background-color: yellow;
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 15px 0px;
+  color: black;
+}
+
+.beginButton:hover {
+  background-color: lime;
+  color: black;
+}
+
+.beginButtonWithoutHover {
+  background-color: yellow;
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 15px 0px;
+  color: black;
+}
+
+.buttonFadeOut {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.gameText {
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bold;
+  color: yellow;
+  width: 100%;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.coin {
+  border: 1px solid black;
+  background: gold;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.coin:hover {
+  color: black;
+  transform: scale(1.2, 1.2);
+}
+
+
+.flippedCoin {
+  border: 1px solid black;
+  background: gold;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  transform: scale(1.2, 1.2);
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.flippedCoin:hover {
+  color: black;
+}
+
+.inactiveCoin {
+  border: 1px solid black;
+  background: gold;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.inactiveCoin:hover {
+  color: black;
+}
+
+.playerArea {
+  background: red;
+  width: 40%;
+  height: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.centralArea {
+  background: yellow;
+  width: 20%;
+  height: 100%;
+}
+
+.computerArea {
+  background: green;
+  width: 40%;
+  height: 100%;
+  border-radius: 0px 20px 20px 0px;
 }

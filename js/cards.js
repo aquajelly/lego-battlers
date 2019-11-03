@@ -110,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
   cardCreation('../images/20191102_132951.jpeg', 'Royal Footsoldier', 5, 6, 6, 4, 5);
   cardCreation('../images/20191102_133046.jpeg', 'Royal Spearman', 6, 5, 4, 3, 6);
   cardCreation('../images/20191102_133133.jpeg', 'Royal Archer', 6, 5, 7, 6, 5);
-  cardCreation('../images/20191102_133200.jpeg', 'Royal Knight', 7, 7, 2, 2, 8);
+  cardCreation('../images/20191102_133200.jpeg', 'Royal Knight', 7, 8, 2, 2, 8);
   cardCreation('../images/20191102_133225.jpeg', 'Kingsguard', 8, 6, 6, 4, 7);
   cardCreation('../images/20191102_133255.jpeg', 'The King', 9, 10, 3, 3, 9);
   cardCreation('../images/20191102_134921.jpeg', 'Dragon Knight', 6, 4, 5, 6, 6);
-  cardCreation('../images/20191102_134904.jpeg', 'Dragon Archer', 7, 2, 8, 9, 5);
+  cardCreation('../images/20191102_134904.jpeg', 'Dragon Archer', 6, 2, 8, 8, 4);
   cardCreation('../images/20191102_134936.jpeg', 'Dragonguard', 8, 5, 5, 6, 7);
   cardCreation('../images/20191102_135038.jpeg', 'The Dragonking', 10, 9, 2, 4, 9);
   cardCreation('../images/20191102_134949.jpeg', 'Dark Ninja', 8, 2, 8, 10, 5);
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cardCreation('../images/20191102_135450-1.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
 
   const content = document.querySelector('.content');
-  const homeButton = document.querySelector('.homepage2')
+  const homeButton = document.querySelector('.homepage')
   content.insertBefore(allCardsDisplay, homeButton);
 
 })
