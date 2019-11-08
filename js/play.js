@@ -26,8 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
       shufflingText.classList.add('hidden', 'gameText');
       gameDisplay.appendChild(shufflingText);
       setTimeout(fadeInText, 200);
-      setTimeout(fadeOutText, 3000);
-      setTimeout(removeText, 4000);
+      setTimeout(fadeOutText, 1000);
+      setTimeout(removeText, 1000);
+      // setTimeout(fadeOutText, 3000);
+      // setTimeout(removeText, 4000);
     }
 
     whoGoesFirst = () => {
@@ -41,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomNumber = Math.floor(Math.random() * 2) + 1;
         if (randomNumber % 2 == 0) {
           coin.innerHTML = 'YOU';
-          playerFirst = true;
+          playerTurn = true;
         } else {
           coin.innerHTML = 'COMPUTER';
-          playerFirst = false;
+          playerTurn = false;
         }
         coin.classList.toggle('fadeOut');
         coin.classList.remove('flippedCoin');
@@ -56,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         coinFlipText.parentNode.removeChild(coinFlipText);
         coin.parentNode.removeChild(coin);
         shufflingDeckText();
-        setTimeout(gameStart, 4000);
+        setTimeout(gameStart, 1000);
+        // setTimeout(gameStart, 4000);
       }
 
       clearCoinAndTextDisplay = () => {
@@ -74,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
         coin.classList.add('flippedCoin');
         coin.classList.toggle('fadeOut');
         setTimeout(coinFlipDecision, 1000);
-        setTimeout(clearCoinAndTextDisplay, 4000);
+        setTimeout(clearCoinAndTextDisplay, 1000);
+        // setTimeout(clearCoinAndTextDisplay, 4000);
       }
 
       addListenerToCoin = () => {
@@ -95,23 +99,251 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(addListenerToCoin, 1500);
     }
 
+
+    generateCards = () => {
+
+      cardCreation = (cardOwner, imageSource, cardNameContent, attack, attackValue,
+        defence, defenceValue, speed, speedValue, stealth, stealthValue,
+        strength, strengthValue) => {
+
+          compareAttackStats = () => {
+            const computerAttackStat = computerArea.childNodes[0].childNodes[1].childNodes[1].childNodes[1].innerHTML;
+            console.log(computerAttackStat);
+            if (attackValue > computerAttackStat) {
+              centralArea.innerHTML = 'Your ' + attackValue + ' beat their ' + computerAttackStat;
+            }
+            if (attackValue <= computerAttackStat) {
+              centralArea.innerHTML = 'Your ' + attackValue + ' did not beat their ' + computerAttackStat;
+            }
+            if (playerTurn = true) {
+            }
+          }
+          
+          compareDefenceStats = () => {
+            const computerDefenceStat = computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[1].innerHTML;
+            console.log(computerDefenceStat);
+            if (attackValue > computerDefenceStat) {
+              centralArea.innerHTML = 'Your ' + defenceValue + ' beat their ' + computerDefenceStat;
+            }
+            if (attackValue <= computerDefenceStat) {
+              centralArea.innerHTML = 'Your ' + defenceValue + ' did not beat their ' + computerDefenceStat;
+            }
+            if (playerTurn = true) {
+            }
+          }
+
+          compareSpeedStats = () => {
+            const computerSpeedStat = computerArea.childNodes[0].childNodes[1].childNodes[3].childNodes[1].innerHTML;
+            console.log(computerSpeedStat);
+            if (speedValue > computerSpeedStat) {
+              centralArea.innerHTML = 'Your ' + speedValue + ' beat their ' + computerSpeedStat;
+            }
+            if (speedValue <= computerSpeedStat) {
+              centralArea.innerHTML = 'Your ' + speedValue + ' did not beat their ' + computerSpeedStat;
+            }
+            if (playerTurn = true) {
+            }
+          }
+
+          compareStealthStats = () => {
+            const computerStealthStat = computerArea.childNodes[0].childNodes[1].childNodes[4].childNodes[1].innerHTML;
+            console.log(computerStealthStat);
+            if (stealthValue > computerStealthStat) {
+              centralArea.innerHTML = 'Your ' + stealthValue + ' beat their ' + computerStealthStat;
+            }
+            if (stealthValue <= computerStealthStat) {
+              centralArea.innerHTML = 'Your ' + stealthValue + ' did not beat their ' + computerStealthStat;
+            }
+            if (playerTurn = true) {
+            }
+          }
+
+          compareStrengthStats = () => {
+            const computerStrengthStat = computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[1].innerHTML;
+            console.log(computerStrengthStat);
+            if (strengthValue > computerStrengthStat) {
+              centralArea.innerHTML = 'Your ' + strengthValue + ' beat their ' + computerStrengthStat;
+            }
+            if (strengthValue <= computerStrengthStat) {
+              centralArea.innerHTML = 'Your ' + strengthValue + ' did not beat their ' + computerStrengthStat;
+            }
+            if (playerTurn = true) {
+            }
+          }
+
+          imageSetup = () => {
+            const image = document.createElement('img');
+            image.className = 'image';
+            if (cardOwner == computerArea) {
+              image.classList.add('hidden');
+            }
+            image.setAttribute('src', imageSource);
+            card.appendChild(image);
+          }
+
+          nameSetup = () => {
+            const cardName = document.createElement('p');
+            cardName.className = 'cardName';
+            if (cardOwner == computerArea) {
+              cardName.classList.add('hidden');
+            }
+            cardName.innerHTML = cardNameContent;
+            cardName.style.fontWeight = 'bold';
+            cardName.style.fontSize = '110%';
+            textArea.appendChild(cardName);
+          }
+
+          statsSetup = (textArea, attack, attackValue, defence, defenceValue,
+             speed, speedValue, stealth, stealthValue, strength,
+             strengthValue) => {
+
+            statSetup = (card, statName, statValue) => {
+              const statArea = document.createElement('div');
+              statArea.className = 'gameStat';
+              if (cardOwner == computerArea) {
+                statArea.classList.add('hidden');
+              }
+              textArea.appendChild(statArea);
+              if (cardOwner == playerArea) {
+                switch (statName) {
+                  case 'Attack:':
+                  statArea.addEventListener('click', compareAttackStats)
+                  break;
+                  case 'Defence:':
+                  statArea.addEventListener('click', compareDefenceStats)
+                  break;
+                  case 'Speed:':
+                  statArea.addEventListener('click', compareSpeedStats)
+                  break;
+                  case 'Stealth:':
+                  statArea.addEventListener('click', compareStealthStats)
+                  break;
+                  case 'Strength:':
+                  statArea.addEventListener('click', compareStrengthStats)
+                  break;
+                }
+              }
+
+              const statNameVariable = document.createElement('p');
+              statNameVariable.className = 'stat';
+              if (cardOwner == computerArea) {
+                statNameVariable.classList.add('hidden');
+              }
+              statNameVariable.innerHTML = statName;
+              statArea.appendChild(statNameVariable);
+
+              const statValueVariable = document.createElement('p');
+              statValueVariable.className = 'statValue';
+              if (cardOwner == computerArea) {
+                statValueVariable.classList.add('hidden');
+              }
+              statValueVariable.innerHTML = statValue;
+              statArea.appendChild(statValueVariable);
+            }
+
+            statSetup(card, attack, attackValue);
+            statSetup(card, defence, defenceValue);
+            statSetup(card, speed, speedValue);
+            statSetup(card, stealth, stealthValue);
+            statSetup(card, strength, strengthValue);
+          }
+
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          imageSetup(card, imageSource);
+
+          textArea = document.createElement('div');
+          textArea.className = 'textArea';
+          if (cardOwner == computerArea) {
+            textArea.classList.add('hidden');
+          }
+          card.appendChild(textArea);
+
+          nameSetup(textArea, cardNameContent);
+          statsSetup(textArea, attack, attackValue, defence, defenceValue, speed, speedValue, stealth, stealthValue, strength, strengthValue);
+
+          cardOwner.appendChild(card);
+        }
+
+        const cardList = [
+          ['../images/20191102_132951.jpeg', 'Royal Footsoldier', 'Attack:', 5, 'Defence:', 6, 'Speed:', 6, 'Stealth:', 4, 'Strength:', 5],
+          ['../images/20191102_133046.jpeg', 'Royal Spearman', 'Attack:', 6, 'Defence:', 5, 'Speed:', 4, 'Stealth:', 3, 'Strength:', 6],
+          ['../images/20191102_133133.jpeg', 'Royal Archer',        'Attack:', 6, 'Defence:', 5, 'Speed:', 7, 'Stealth:', 6, 'Strength:', 5],
+          ['../images/20191102_133200.jpeg', 'Royal Knight',        'Attack:', 7, 'Defence:', 8, 'Speed:', 2, 'Stealth:', 2, 'Strength:', 8],
+          ['../images/20191102_133225.jpeg', 'Kingsguard',          'Attack:', 8, 'Defence:', 6, 'Speed:', 6, 'Stealth:', 4, 'Strength:', 7],
+          ['../images/20191102_133255.jpeg', 'The King',            'Attack:', 9, 'Defence:', 10, 'Speed:', 3, 'Stealth:', 3, 'Strength:', 9],
+          ['../images/20191102_134921.jpeg', 'Dragon Knight',       'Attack:', 6, 'Defence:', 4, 'Speed:', 5, 'Stealth:', 6, 'Strength:', 6],
+          ['../images/20191102_134904.jpeg', 'Dragon Archer',       'Attack:', 6, 'Defence:', 2, 'Speed:', 8, 'Stealth:', 8, 'Strength:', 4],
+          ['../images/20191102_134936.jpeg', 'Dragonguard',         'Attack:', 8, 'Defence:', 5, 'Speed:', 5, 'Stealth:', 6, 'Strength:', 7],
+          ['../images/20191102_135038.jpeg', 'The Dragonking',      'Attack:', 10, 'Defence:', 9, 'Speed:', 2, 'Stealth:', 4, 'Strength:', 9],
+          ['../images/20191102_134949.jpeg', 'Dark Ninja',          'Attack:', 8, 'Defence:', 2, 'Speed:', 8, 'Stealth:', 10, 'Strength:', 5],
+          ['../images/20191102_135005.jpeg', 'The Executioner',     'Attack:', 7, 'Defence:', 3, 'Speed:', 7, 'Stealth:', 7, 'Strength:', 6],
+          ['../images/20191102_134823.jpeg', 'Ogre Brute',          'Attack:', 8, 'Defence:', 1, 'Speed:', 1, 'Stealth:', 2, 'Strength:', 10],
+          ['../images/20191102_134957.jpeg', 'Assassin',            'Attack:', 5, 'Defence:', 2, 'Speed:', 9, 'Stealth:', 9, 'Strength:', 4],
+          ['../images/20191102_135026.jpeg', 'Distant Swordsman',   'Attack:', 8, 'Defence:', 8, 'Speed:', 6, 'Stealth:', 5, 'Strength:', 7],
+          ['../images/20191102_133442.jpeg', 'King\'s Horse',       'Attack:', 2, 'Defence:', 7, 'Speed:', 10, 'Stealth:', 1, 'Strength:', 7],
+          ['../images/20191102_135050.jpeg', 'Dragonsteed',         'Attack:', 2, 'Defence:', 4, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 7],
+          ['../images/20191102_134213.jpeg', 'King on Horse',       'Attack:', 8, 'Defence:', 9, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 8],
+          ['../images/20191102_135115.jpeg', 'Dragon on Steed',     'Attack:', 9, 'Defence:', 7, 'Speed:', 10, 'Stealth:', 4, 'Strength:', 8],
+          ['../images/20191102_135450-1.jpeg', 'Royal Castle',      'Attack:', 3, 'Defence:', 10, 'Speed:', 0, 'Stealth:', 0, 'Strength:', 10]
+        ]
+
+        const randomPlayerCardNumber = Math.floor(Math.random() * 20);
+        cardCreation(
+          playerArea,
+          cardList[randomPlayerCardNumber][0],
+          cardList[randomPlayerCardNumber][1],
+          cardList[randomPlayerCardNumber][2],
+          cardList[randomPlayerCardNumber][3],
+          cardList[randomPlayerCardNumber][4],
+          cardList[randomPlayerCardNumber][5],
+          cardList[randomPlayerCardNumber][6],
+          cardList[randomPlayerCardNumber][7],
+          cardList[randomPlayerCardNumber][8],
+          cardList[randomPlayerCardNumber][9],
+          cardList[randomPlayerCardNumber][10],
+          cardList[randomPlayerCardNumber][11]
+        );
+
+        const randomComputerCardNumber = Math.floor(Math.random() * 20);
+        cardCreation(
+          computerArea,
+          cardList[randomComputerCardNumber][0],
+          cardList[randomComputerCardNumber][1],
+          cardList[randomComputerCardNumber][2],
+          cardList[randomComputerCardNumber][3],
+          cardList[randomComputerCardNumber][4],
+          cardList[randomComputerCardNumber][5],
+          cardList[randomComputerCardNumber][6],
+          cardList[randomComputerCardNumber][7],
+          cardList[randomComputerCardNumber][8],
+          cardList[randomComputerCardNumber][9],
+          cardList[randomComputerCardNumber][10],
+          cardList[randomComputerCardNumber][11]
+        );
+
+    }
+
+
     gameStart = () => {
-      const playerArea = document.createElement('div');
-      if (playerFirst == true) {
-        playerArea.innerHTML = 'Player first';
-      } else {
-        playerArea.innerHTML = 'Computer first';
-      }
+      playerArea = document.createElement('div');
       playerArea.className = 'playerArea';
       gameDisplay.appendChild(playerArea);
 
-      const centralArea = document.createElement('div');
+      centralArea = document.createElement('div');
+      if (playerTurn == true) {
+        centralArea.innerHTML = 'You go first!';
+      } else {
+        centralArea.innerHTML = 'Computer goes first';
+      }
       centralArea.className = 'centralArea';
       gameDisplay.appendChild(centralArea);
 
-      const computerArea = document.createElement('div');
+      computerArea = document.createElement('div');
       computerArea.className = 'computerArea';
       gameDisplay.appendChild(computerArea);
+      generateCards();
 
     }
 
@@ -133,6 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const content = document.querySelector('.content');
   const homeButton = document.querySelector('.homepage');
   content.insertBefore(gameDisplay, homeButton);
+
 
 // gamePlay = (num1, num2) => {
 //   let gameScore = 0;
