@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateCards = () => {
 
-      cardCreation = (cardOwner, imageSource, cardNameContent, attack, attackValue,
+      cardCreation = (cardPosition, cardOwner, imageSource, cardNameContent, attack, attackValue,
         defence, defenceValue, speed, speedValue, stealth, stealthValue,
         strength, strengthValue) => {
 
@@ -118,14 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (playerTurn = true) {
             }
           }
-          
+
           compareDefenceStats = () => {
             const computerDefenceStat = computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[1].innerHTML;
             console.log(computerDefenceStat);
-            if (attackValue > computerDefenceStat) {
+            if (defenceValue > computerDefenceStat) {
               centralArea.innerHTML = 'Your ' + defenceValue + ' beat their ' + computerDefenceStat;
             }
-            if (attackValue <= computerDefenceStat) {
+            if (defenceValue <= computerDefenceStat) {
               centralArea.innerHTML = 'Your ' + defenceValue + ' did not beat their ' + computerDefenceStat;
             }
             if (playerTurn = true) {
@@ -169,6 +169,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (playerTurn = true) {
             }
+          }
+
+          positionSetup = () => {
+            if (cardPosition == 0) {
+              card.setAttribute("position", "relative");
+            } else {
+              card.setAttribute("position", "absolute");
+            }
+            var offset = (cardPosition*5) + 'px';
+            console.log(offset);
+            card.setAttribute("left", offset);
+            card.setAttribute("z-index", cardPosition);
           }
 
           imageSetup = () => {
@@ -263,12 +275,73 @@ document.addEventListener('DOMContentLoaded', () => {
           nameSetup(textArea, cardNameContent);
           statsSetup(textArea, attack, attackValue, defence, defenceValue, speed, speedValue, stealth, stealthValue, strength, strengthValue);
 
+          positionSetup(card, cardPosition);
           cardOwner.appendChild(card);
         }
 
+        playerCardCreator = () => {
+          for (i=0; i<playerCards.length; i++) {
+            cardCreation(
+              i,
+              playerArea,
+              playerCards[i][0],
+              playerCards[i][1],
+              playerCards[i][2],
+              playerCards[i][3],
+              playerCards[i][4],
+              playerCards[i][5],
+              playerCards[i][6],
+              playerCards[i][7],
+              playerCards[i][8],
+              playerCards[i][9],
+              playerCards[i][10],
+              playerCards[i][11]
+            )
+          }
+        }
+
+        computerCardCreator = () => {
+          for (i=0; i<computerCards.length; i++) {
+            cardCreation(
+              i,
+              computerArea,
+              computerCards[i][0],
+              computerCards[i][1],
+              computerCards[i][2],
+              computerCards[i][3],
+              computerCards[i][4],
+              computerCards[i][5],
+              computerCards[i][6],
+              computerCards[i][7],
+              computerCards[i][8],
+              computerCards[i][9],
+              computerCards[i][10],
+              computerCards[i][11]
+            )
+          }
+        }
+
+        playerCardGenerator = () => {
+          for (i=0; i<10; i++) {
+            var randomPlayerCardNumber = Math.floor(Math.random() * cardList.length);
+            playerCards.push(cardList[randomPlayerCardNumber]);
+            cardList.splice(randomPlayerCardNumber, 1);
+          }
+          playerCardCreator();
+        }
+
+        computerCardGenerator = () => {
+          for (i=0; i<10; i++) {
+            var randomComputerCardNumber = Math.floor(Math.random() * cardList.length);
+            computerCards.push(cardList[randomComputerCardNumber]);
+            cardList.splice(randomComputerCardNumber, 1);
+          }
+          computerCardCreator();
+        }
+
         const cardList = [
-          ['../images/20191102_132951.jpeg', 'Royal Footsoldier', 'Attack:', 5, 'Defence:', 6, 'Speed:', 6, 'Stealth:', 4, 'Strength:', 5],
-          ['../images/20191102_133046.jpeg', 'Royal Spearman', 'Attack:', 6, 'Defence:', 5, 'Speed:', 4, 'Stealth:', 3, 'Strength:', 6],
+          ['../images/20191102_132951.jpeg', 'Royal Footsoldier',   'Attack:', 5, 'Defence:', 6, 'Speed:', 6, 'Stealth:', 4, 'Strength:', 5],
+          ['../images/20191102_133046.jpeg', 'Royal Spearman',      'Attack:', 6, 'Defence:', 5, 'Speed:', 4, 'Stealth:', 3, 'Strength:', 6],
           ['../images/20191102_133133.jpeg', 'Royal Archer',        'Attack:', 6, 'Defence:', 5, 'Speed:', 7, 'Stealth:', 6, 'Strength:', 5],
           ['../images/20191102_133200.jpeg', 'Royal Knight',        'Attack:', 7, 'Defence:', 8, 'Speed:', 2, 'Stealth:', 2, 'Strength:', 8],
           ['../images/20191102_133225.jpeg', 'Kingsguard',          'Attack:', 8, 'Defence:', 6, 'Speed:', 6, 'Stealth:', 4, 'Strength:', 7],
@@ -286,42 +359,15 @@ document.addEventListener('DOMContentLoaded', () => {
           ['../images/20191102_135050.jpeg', 'Dragonsteed',         'Attack:', 2, 'Defence:', 4, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 7],
           ['../images/20191102_134213.jpeg', 'King on Horse',       'Attack:', 8, 'Defence:', 9, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 8],
           ['../images/20191102_135115.jpeg', 'Dragon on Steed',     'Attack:', 9, 'Defence:', 7, 'Speed:', 10, 'Stealth:', 4, 'Strength:', 8],
-          ['../images/20191102_135450-1.jpeg', 'Royal Castle',      'Attack:', 3, 'Defence:', 10, 'Speed:', 0, 'Stealth:', 0, 'Strength:', 10]
+          ['../images/20191102_135450.jpeg', 'Royal Castle',      'Attack:', 3, 'Defence:', 10, 'Speed:', 0, 'Stealth:', 0, 'Strength:', 10]
         ]
 
-        const randomPlayerCardNumber = Math.floor(Math.random() * 20);
-        cardCreation(
-          playerArea,
-          cardList[randomPlayerCardNumber][0],
-          cardList[randomPlayerCardNumber][1],
-          cardList[randomPlayerCardNumber][2],
-          cardList[randomPlayerCardNumber][3],
-          cardList[randomPlayerCardNumber][4],
-          cardList[randomPlayerCardNumber][5],
-          cardList[randomPlayerCardNumber][6],
-          cardList[randomPlayerCardNumber][7],
-          cardList[randomPlayerCardNumber][8],
-          cardList[randomPlayerCardNumber][9],
-          cardList[randomPlayerCardNumber][10],
-          cardList[randomPlayerCardNumber][11]
-        );
+        playerCards = [];
 
-        const randomComputerCardNumber = Math.floor(Math.random() * 20);
-        cardCreation(
-          computerArea,
-          cardList[randomComputerCardNumber][0],
-          cardList[randomComputerCardNumber][1],
-          cardList[randomComputerCardNumber][2],
-          cardList[randomComputerCardNumber][3],
-          cardList[randomComputerCardNumber][4],
-          cardList[randomComputerCardNumber][5],
-          cardList[randomComputerCardNumber][6],
-          cardList[randomComputerCardNumber][7],
-          cardList[randomComputerCardNumber][8],
-          cardList[randomComputerCardNumber][9],
-          cardList[randomComputerCardNumber][10],
-          cardList[randomComputerCardNumber][11]
-        );
+        computerCards = [];
+
+        playerCardGenerator();
+        computerCardGenerator();
 
     }
 
