@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cardCreation('../images/20191102_135050.jpeg', 'Dragonsteed', 2, 4, 10, 2, 7);
   cardCreation('../images/20191102_134213.jpeg', 'King on Horse', 8, 9, 10, 2, 8);
   cardCreation('../images/20191102_135115.jpeg', 'Dragon on Steed', 9, 7, 10, 4, 8);
-  cardCreation('../images/20191102_135450-1.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
+  cardCreation('../images/20191102_135450.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
 
   const content = document.querySelector('.content');
   const homeButton = document.querySelector('.homepage')
