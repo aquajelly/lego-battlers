@@ -136,6 +136,46 @@ document.addEventListener('DOMContentLoaded', () => {
             computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[1].classList.toggle('fadeIn');
           }
 
+          fadeOutComputerCard = () => {
+            computerArea.childNodes[0].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].childNodes[1].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[0].classList.toggle('fadeIn');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[1].classList.toggle('fadeIn');
+
+            computerArea.childNodes[0].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[1].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[2].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[3].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[4].childNodes[1].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[0].classList.toggle('fadeOut');
+            computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[1].classList.toggle('fadeOut');
+          }
+
           roundWon = () => {
             playerCards.push(computerCards[0]);
             playerCards.push(playerCards[0]);
@@ -146,15 +186,31 @@ document.addEventListener('DOMContentLoaded', () => {
             computerCardCreator();
           }
 
+          roundLost = () => {
+            computerCards.push(computerCards[0]);
+            computerCards.push(playerCards[0]);
+            computerCards.splice(0, 1);
+            playerCards.splice(0, 1);
+            clearAreas();
+            playerCardCreator();
+            computerCardCreator();
+          }
+
           compareAttackStats = () => {
             var computerAttackStat = computerCards[0][3];
             if (attackValue > computerAttackStat) {
               centralArea.innerHTML = 'Your ' + attackValue + ' beat their ' + computerAttackStat;
               fadeInComputerCard();
-              setTimeout(roundWon, 1500);
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = true;
+              setTimeout(roundWon, 2000);
             }
             if (attackValue <= computerAttackStat) {
               centralArea.innerHTML = 'Your ' + attackValue + ' did not beat their ' + computerAttackStat;
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = false;
+              setTimeout(roundLost, 2000);
             }
             if (playerTurn = true) {
             }
@@ -165,10 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (defenceValue > computerDefenceStat) {
               centralArea.innerHTML = 'Your ' + defenceValue + ' beat their ' + computerDefenceStat;
               fadeInComputerCard();
-              setTimeout(roundWon, 1500);
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = true;
+              setTimeout(roundWon, 2000);
             }
             if (defenceValue <= computerDefenceStat) {
               centralArea.innerHTML = 'Your ' + defenceValue + ' did not beat their ' + computerDefenceStat;
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = false;
+              setTimeout(roundLost, 2000);
             }
             if (playerTurn = true) {
             }
@@ -179,10 +241,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (speedValue > computerSpeedStat) {
               centralArea.innerHTML = 'Your ' + speedValue + ' beat their ' + computerSpeedStat;
               fadeInComputerCard();
-              setTimeout(roundWon, 1500);
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = true;
+              setTimeout(roundWon, 2000);
             }
             if (speedValue <= computerSpeedStat) {
               centralArea.innerHTML = 'Your ' + speedValue + ' did not beat their ' + computerSpeedStat;
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = false;
+              setTimeout(roundLost, 2000);
             }
             if (playerTurn = true) {
             }
@@ -192,11 +260,17 @@ document.addEventListener('DOMContentLoaded', () => {
             var computerStealthStat = computerCards[0][9];
             if (stealthValue > computerStealthStat) {
               centralArea.innerHTML = 'Your ' + stealthValue + ' beat their ' + computerStealthStat;
+              playerTurn = true;
               fadeInComputerCard();
-              setTimeout(roundWon, 1500);
+              setTimeout(fadeOutComputerCard, 1000);
+              setTimeout(roundWon, 2000);
             }
             if (stealthValue <= computerStealthStat) {
               centralArea.innerHTML = 'Your ' + stealthValue + ' did not beat their ' + computerStealthStat;
+              playerTurn = false;
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 1000);
+              setTimeout(roundLost, 2000);
             }
             if (playerTurn = true) {
             }
@@ -207,19 +281,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (strengthValue > computerStrengthStat) {
               centralArea.innerHTML = 'Your ' + strengthValue + ' beat their ' + computerStrengthStat;
               fadeInComputerCard();
-              setTimeout(roundWon, 1500);
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = true;
+              setTimeout(roundWon, 2000);
             }
             if (strengthValue <= computerStrengthStat) {
               centralArea.innerHTML = 'Your ' + strengthValue + ' did not beat their ' + computerStrengthStat;
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 1000);
+              playerTurn = false;
+              setTimeout(roundLost, 2000);
             }
             if (playerTurn = true) {
             }
           }
 
           positionSetup = () => {
-            console.log("adjusting cards");
             card.style.position = "absolute";
-            var overlapOffset = 20 - i;
+            var overlapOffset = (playerCards.length + computerCards.length) - i;
             var positionOffset = ((cardPosition*3) + 10) + 'px';
             card.style.marginLeft = positionOffset;
             card.style.marginTop = positionOffset;
@@ -254,28 +333,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             statSetup = (card, statName, statValue) => {
               const statArea = document.createElement('div');
-              statArea.className = 'gameStat';
+              statArea.className = 'gameStatWithoutHover';
               if (cardOwner == computerArea) {
                 statArea.classList.add('hidden');
               }
               textArea.appendChild(statArea);
-              if (cardOwner == playerArea) {
-                switch (statName) {
-                  case 'Attack:':
-                  statArea.addEventListener('click', compareAttackStats)
-                  break;
-                  case 'Defence:':
-                  statArea.addEventListener('click', compareDefenceStats)
-                  break;
-                  case 'Speed:':
-                  statArea.addEventListener('click', compareSpeedStats)
-                  break;
-                  case 'Stealth:':
-                  statArea.addEventListener('click', compareStealthStats)
-                  break;
-                  case 'Strength:':
-                  statArea.addEventListener('click', compareStrengthStats)
-                  break;
+              console.log(playerTurn);
+              if (playerTurn) {
+                if (cardOwner == playerArea) {
+                  statArea.className = 'gameStatWithHover';
+                  switch (statName) {
+                    case 'Attack:':
+                    statArea.addEventListener('click', compareAttackStats)
+                    break;
+                    case 'Defence:':
+                    statArea.addEventListener('click', compareDefenceStats)
+                    break;
+                    case 'Speed:':
+                    statArea.addEventListener('click', compareSpeedStats)
+                    break;
+                    case 'Stealth:':
+                    statArea.addEventListener('click', compareStealthStats)
+                    break;
+                    case 'Strength:':
+                    statArea.addEventListener('click', compareStrengthStats)
+                    break;
+                  }
                 }
               }
 
@@ -421,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gameDisplay.appendChild(playerArea);
 
       centralArea = document.createElement('div');
-      if (playerTurn == true) {
+      if (playerTurn) {
         centralArea.innerHTML = 'You go first!';
       } else {
         centralArea.innerHTML = 'Computer goes first';
