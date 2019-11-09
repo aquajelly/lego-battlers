@@ -478,13 +478,19 @@ button:focus {
   border-radius: 0px 20px 20px 0px;
 }
 
-.gameStat {
+.gameStatWithoutHover {
   width: 80%;
   margin: auto;
   border-radius: 20px;
 }
 
-.gameStat:hover {
+.gameStatWithHover {
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.gameStatWithHover:hover {
   background: rgb(73, 72, 71);
   color: white;
   transition: background 0.5s;
