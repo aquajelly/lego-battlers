@@ -334,7 +334,7 @@ button:focus {
 }
 
 .gameDisplay {
-  background: blue;
+  background: grey;
   width: 90%;
   height: 400px;
   margin: 20px auto;
@@ -459,20 +459,20 @@ button:focus {
 }
 
 .playerArea {
-  background: red;
+  background: grey;
   width: 40%;
   height: 100%;
   border-radius: 20px 0px 0px 20px;
 }
 
 .centralArea {
-  background: yellow;
+  background: rgb(171, 167, 169);
   width: 20%;
   height: 100%;
 }
 
 .computerArea {
-  background: green;
+  background: grey;
   width: 40%;
   height: 100%;
   border-radius: 0px 20px 20px 0px;
@@ -491,7 +491,13 @@ button:focus {
 }
 
 .gameStatWithHover:hover {
-  background: rgb(73, 72, 71);
+  background: black;
+  color: white;
+  transition: background 0.5s;
+}
+
+.computerHighlightedStat {
+  background: black;
   color: white;
   transition: background 0.5s;
 }
