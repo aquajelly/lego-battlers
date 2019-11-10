@@ -99,12 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(addListenerToCoin, 1500);
     }
 
-
     generateCards = () => {
 
       cardCreation = (cardPosition, cardOwner, imageSource, cardNameContent, attack, attackValue,
         defence, defenceValue, speed, speedValue, stealth, stealthValue,
         strength, strengthValue) => {
+
 
           clearAreas = () => {
             while (playerArea.firstChild) {
@@ -182,9 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
             playerCards.push(playerCards[0]);
             playerCards.splice(0, 1);
             computerCards.splice(0, 1);
-            clearAreas();
-            playerCardCreator();
-            computerCardCreator();
+            if (computerCards.length == 0) {
+              clearAreas();
+              centralArea.innerHTML = 'YOU WIN!';
+            } else {
+              clearAreas();
+              playerCardCreator();
+              computerCardCreator();
+            }
           }
 
           roundLost = () => {
@@ -193,99 +198,162 @@ document.addEventListener('DOMContentLoaded', () => {
             computerCards.push(playerCards[0]);
             computerCards.splice(0, 1);
             playerCards.splice(0, 1);
-            clearAreas()
-            playerCardCreator()
-            computerCardCreator()
+            if (playerCards.length == 0) {
+              clearAreas();
+              centralArea.innerHTML = 'YOU LOSE!';
+            } else {
+              clearAreas();
+              playerCardCreator();
+              computerCardCreator();
+            }
           }
 
           compareAttackStats = () => {
+            var playerAttackStat = playerCards[0][3];
             var computerAttackStat = computerCards[0][3];
-            if (attackValue > computerAttackStat) {
-              centralArea.innerHTML = 'Your ' + attackValue + ' beat their ' + computerAttackStat;
+            if (playerAttackStat > computerAttackStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerAttackStat + ' beat their ' + computerAttackStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundWon, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('computerHighlightedStat');
+              setTimeout(roundWon, 2500);
             }
-            if (attackValue <= computerAttackStat) {
-              centralArea.innerHTML = 'Your ' + attackValue + ' did not beat their ' + computerAttackStat;
+            if (playerAttackStat <= computerAttackStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerAttackStat + ' did not beat their ' + computerAttackStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundLost, 2000);
-            }
-            if (playerTurn = true) {
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('computerHighlightedStat');
+              setTimeout(roundLost, 2500);
             }
           }
 
           compareDefenceStats = () => {
+            var playerDefenceStat = playerCards[0][5];
             var computerDefenceStat = computerCards[0][5];
-            if (defenceValue > computerDefenceStat) {
-              centralArea.innerHTML = 'Your ' + defenceValue + ' beat their ' + computerDefenceStat;
+            if (playerDefenceStat > computerDefenceStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' beat their ' + computerDefenceStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundWon, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('computerHighlightedStat');
+              setTimeout(roundWon, 2500);
             }
-            if (defenceValue <= computerDefenceStat) {
-              centralArea.innerHTML = 'Your ' + defenceValue + ' did not beat their ' + computerDefenceStat;
+            if (playerDefenceStat <= computerDefenceStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' did not beat their ' + computerDefenceStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundLost, 2000);
-            }
-            if (playerTurn = true) {
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('computerHighlightedStat');
+              setTimeout(roundLost, 2500);
             }
           }
 
           compareSpeedStats = () => {
+            var playerSpeedStat = playerCards[0][7];
             var computerSpeedStat = computerCards[0][7];
-            if (speedValue > computerSpeedStat) {
-              centralArea.innerHTML = 'Your ' + speedValue + ' beat their ' + computerSpeedStat;
+            if (playerSpeedStat > computerSpeedStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' beat their ' + computerSpeedStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundWon, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('computerHighlightedStat');
+              setTimeout(roundWon, 2500);
             }
-            if (speedValue <= computerSpeedStat) {
-              centralArea.innerHTML = 'Your ' + speedValue + ' did not beat their ' + computerSpeedStat;
+            if (playerSpeedStat <= computerSpeedStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' did not beat their ' + computerSpeedStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundLost, 2000);
-            }
-            if (playerTurn = true) {
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('computerHighlightedStat');
+              setTimeout(roundLost, 2500);
             }
           }
 
           compareStealthStats = () => {
+            var playerStealthStat = playerCards[0][9];
             var computerStealthStat = computerCards[0][9];
-            if (stealthValue > computerStealthStat) {
-              centralArea.innerHTML = 'Your ' + stealthValue + ' beat their ' + computerStealthStat;
+            if (playerStealthStat > computerStealthStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStealthStat + ' beat their ' + computerStealthStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundWon, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('computerHighlightedStat');
+              setTimeout(roundWon, 2500);
             }
-            if (stealthValue <= computerStealthStat) {
-              centralArea.innerHTML = 'Your ' + stealthValue + ' did not beat their ' + computerStealthStat;
+            if (playerStealthStat <= computerStealthStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStealthStat + ' did not beat their ' + computerStealthStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundLost, 2000);
-            }
-            if (playerTurn = true) {
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('computerHighlightedStat');
+              setTimeout(roundLost, 2500);
             }
           }
 
           compareStrengthStats = () => {
+            var playerStrengthStat = playerCards[0][11];
             var computerStrengthStat = computerCards[0][11];
-            if (strengthValue > computerStrengthStat) {
-              centralArea.innerHTML = 'Your ' + strengthValue + ' beat their ' + computerStrengthStat;
+            if (playerStrengthStat > computerStrengthStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' beat their ' + computerStrengthStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundWon, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('computerHighlightedStat');
+              setTimeout(roundWon, 2500);
             }
-            if (strengthValue <= computerStrengthStat) {
-              centralArea.innerHTML = 'Your ' + strengthValue + ' did not beat their ' + computerStrengthStat;
+            if (playerStrengthStat <= computerStrengthStat) {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' did not beat their ' + computerStrengthStat;
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1000);
-              setTimeout(roundLost, 2000);
+              setTimeout(fadeOutComputerCard, 1500);
+              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('computerHighlightedStat');
+              setTimeout(roundLost, 2500);
             }
-            if (playerTurn = true) {
-            }
+          }
+
+          removeEventListeners = () => {
+            var attackStat = document.getElementsByClassName('gameStatWithHover')[0];
+            var clonedAttackStat = document.getElementsByClassName('gameStatWithHover')[0].cloneNode(true);
+            attackStat.parentNode.replaceChild(clonedAttackStat, attackStat);
+            console.log("removed stat");
+            var defenceStat = document.getElementsByClassName('gameStatWithHover')[1];
+            var clonedDefenceStat = document.getElementsByClassName('gameStatWithHover')[1].cloneNode(true);
+            defenceStat.parentNode.replaceChild(clonedDefenceStat, defenceStat);
+            console.log("removed stat");
+            var speedStat = document.getElementsByClassName('gameStatWithHover')[2];
+            var clonedSpeedStat = document.getElementsByClassName('gameStatWithHover')[2].cloneNode(true);
+            speedStat.parentNode.replaceChild(clonedSpeedStat, speedStat);
+            console.log("removed stat");
+            var stealthStat = document.getElementsByClassName('gameStatWithHover')[3];
+            var clonedStealthStat = document.getElementsByClassName('gameStatWithHover')[3].cloneNode(true);
+            stealthStat.parentNode.replaceChild(clonedStealthStat, stealthStat);
+            console.log("removed stat");
+            var strengthStat = document.getElementsByClassName('gameStatWithHover')[4];
+            var clonedStrengthStat = document.getElementsByClassName('gameStatWithHover')[4].cloneNode(true);
+            strengthStat.parentNode.replaceChild(clonedStrengthStat, strengthStat);
+            console.log("removed stat");
           }
 
           positionSetup = () => {
@@ -335,19 +403,24 @@ document.addEventListener('DOMContentLoaded', () => {
                   statArea.className = 'gameStatWithHover';
                   switch (statName) {
                     case 'Attack:':
-                    statArea.addEventListener('click', compareAttackStats)
+                    statArea.addEventListener('click', compareAttackStats);
+                    console.log("added event listener for" + statName);
                     break;
                     case 'Defence:':
-                    statArea.addEventListener('click', compareDefenceStats)
+                    statArea.addEventListener('click', compareDefenceStats);
+                    console.log("added event listener for" + statName);
                     break;
                     case 'Speed:':
-                    statArea.addEventListener('click', compareSpeedStats)
+                    statArea.addEventListener('click', compareSpeedStats);
+                    console.log("added event listener for" + statName);
                     break;
                     case 'Stealth:':
-                    statArea.addEventListener('click', compareStealthStats)
+                    statArea.addEventListener('click', compareStealthStats);
+                    console.log("added event listener for" + statName);
                     break;
                     case 'Strength:':
-                    statArea.addEventListener('click', compareStrengthStats)
+                    statArea.addEventListener('click', compareStrengthStats);
+                    console.log("added event listener for" + statName);
                     break;
                   }
                 }
@@ -397,8 +470,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         computerTurn = () => {
-          var highestStat = Math.max(computerCards[0][3], computerCards[0][5], computerCards[0][7], computerCards[0][9], computerCards[0][11]);
-          console.log(highestStat);
+          highestComputerStat = Math.max(computerCards[0][3], computerCards[0][5], computerCards[0][7], computerCards[0][9], computerCards[0][11]);
+          switch (highestComputerStat) {
+            case computerCards[0][3]:
+            compareAttackStats();
+            break;
+            case computerCards[0][5]:
+            compareDefenceStats();
+            break;
+            case computerCards[0][7]:
+            compareSpeedStats();
+            break;
+            case computerCards[0][9]:
+            compareStealthStats();
+            break;
+            case computerCards[0][11]:
+            compareStrengthStats();
+            break;
+          }
         }
 
         playerCardCreator = () => {
@@ -442,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
             )
           }
           if (playerTurn == false) {
-            computerTurn();
+            setTimeout(computerTurn, 1000);
           }
         }
 
