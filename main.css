@@ -469,6 +469,7 @@ button:focus {
   background: rgb(171, 167, 169);
   width: 20%;
   height: 100%;
+  font-family: monospace;
 }
 
 .computerArea {
@@ -496,8 +497,14 @@ button:focus {
   transition: background 0.5s;
 }
 
-.computerHighlightedStat {
+.computerHighlightedStatFadeIn {
   background: black;
   color: white;
+  /* transition: background 0.5s; */
+}
+.computerHighlightedStatFadeOut {
+  background: rgb(193, 194, 196);
+  color: inherit;
   transition: background 0.5s;
+  transition: color 0.5s;
 }

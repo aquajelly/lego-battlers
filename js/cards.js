@@ -122,10 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
   cardCreation('../images/20191102_134823.jpeg', 'Ogre Brute', 8, 1, 1, 2, 10);
   cardCreation('../images/20191102_134957.jpeg', 'Assassin', 5, 2, 9, 9, 4);
   cardCreation('../images/20191102_135026.jpeg', 'Distant Swordsman', 8, 8, 6, 5, 7);
-  cardCreation('../images/20191102_133442.jpeg', 'King\'s Horse', 2, 7, 10, 1, 7);
+  cardCreation('../images/20191102_133442.jpeg', 'King\'s Horse', 2, 7, 9, 1, 7);
   cardCreation('../images/20191102_135050.jpeg', 'Dragonsteed', 2, 4, 10, 2, 7);
-  cardCreation('../images/20191102_134213.jpeg', 'King on Horse', 8, 9, 10, 2, 8);
-  cardCreation('../images/20191102_135115.jpeg', 'Dragon on Steed', 9, 7, 10, 4, 8);
+  cardCreation('../images/20191102_134213.jpeg', 'King on Horse', 8, 9, 8, 2, 8);
+  cardCreation('../images/20191102_135115.jpeg', 'Dragon on Steed', 9, 7, 9, 3, 8);
   cardCreation('../images/20191102_135450.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
 
   const content = document.querySelector('.content');
