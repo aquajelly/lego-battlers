@@ -500,11 +500,4 @@ button:focus {
 .computerHighlightedStatFadeIn {
   background: black;
   color: white;
-  /* transition: background 0.5s; */
-}
-.computerHighlightedStatFadeOut {
-  background: rgb(193, 194, 196);
-  color: inherit;
-  transition: background 0.5s;
-  transition: color 0.5s;
 }
