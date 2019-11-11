@@ -216,20 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerAttackStat + ' beat their ' + computerAttackStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('computerHighlightedStat');
-              setTimeout(roundWon, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundWon, 3000);
             }
             if (playerAttackStat <= computerAttackStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerAttackStat + ' did not beat their ' + computerAttackStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.toggle('computerHighlightedStat');
-              setTimeout(roundLost, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundLost, 3000);
             }
           }
 
@@ -241,20 +241,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerDefenceStat + ' beat their ' + computerDefenceStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('computerHighlightedStat');
-              setTimeout(roundWon, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundWon, 3000);
             }
             if (playerDefenceStat <= computerDefenceStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerDefenceStat + ' did not beat their ' + computerDefenceStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.toggle('computerHighlightedStat');
-              setTimeout(roundLost, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundLost, 3000);
             }
           }
 
@@ -266,20 +266,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerSpeedStat + ' beat their ' + computerSpeedStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('computerHighlightedStat');
-              setTimeout(roundWon, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundWon, 3000);
             }
             if (playerSpeedStat <= computerSpeedStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerSpeedStat + ' did not beat their ' + computerSpeedStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.toggle('computerHighlightedStat');
-              setTimeout(roundLost, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundLost, 3000);
             }
           }
 
@@ -291,20 +291,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerStealthStat + ' beat their ' + computerStealthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('computerHighlightedStat');
-              setTimeout(roundWon, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundWon, 3000);
             }
             if (playerStealthStat <= computerStealthStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerStealthStat + ' did not beat their ' + computerStealthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.toggle('computerHighlightedStat');
-              setTimeout(roundLost, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundLost, 3000);
             }
           }
 
@@ -316,20 +316,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerStrengthStat + ' beat their ' + computerStrengthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('computerHighlightedStat');
-              setTimeout(roundWon, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundWon, 3000);
             }
             if (playerStrengthStat <= computerStrengthStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
               centralArea.innerHTML = 'Your ' + playerStrengthStat + ' did not beat their ' + computerStrengthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
-              setTimeout(fadeOutComputerCard, 1500);
-              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.toggle('computerHighlightedStat');
-              setTimeout(roundLost, 2500);
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundLost, 3000);
             }
           }
 
@@ -337,23 +337,18 @@ document.addEventListener('DOMContentLoaded', () => {
             var attackStat = document.getElementsByClassName('gameStatWithHover')[0];
             var clonedAttackStat = document.getElementsByClassName('gameStatWithHover')[0].cloneNode(true);
             attackStat.parentNode.replaceChild(clonedAttackStat, attackStat);
-            console.log("removed stat");
             var defenceStat = document.getElementsByClassName('gameStatWithHover')[1];
             var clonedDefenceStat = document.getElementsByClassName('gameStatWithHover')[1].cloneNode(true);
             defenceStat.parentNode.replaceChild(clonedDefenceStat, defenceStat);
-            console.log("removed stat");
             var speedStat = document.getElementsByClassName('gameStatWithHover')[2];
             var clonedSpeedStat = document.getElementsByClassName('gameStatWithHover')[2].cloneNode(true);
             speedStat.parentNode.replaceChild(clonedSpeedStat, speedStat);
-            console.log("removed stat");
             var stealthStat = document.getElementsByClassName('gameStatWithHover')[3];
             var clonedStealthStat = document.getElementsByClassName('gameStatWithHover')[3].cloneNode(true);
             stealthStat.parentNode.replaceChild(clonedStealthStat, stealthStat);
-            console.log("removed stat");
             var strengthStat = document.getElementsByClassName('gameStatWithHover')[4];
             var clonedStrengthStat = document.getElementsByClassName('gameStatWithHover')[4].cloneNode(true);
             strengthStat.parentNode.replaceChild(clonedStrengthStat, strengthStat);
-            console.log("removed stat");
           }
 
           positionSetup = () => {
@@ -404,23 +399,18 @@ document.addEventListener('DOMContentLoaded', () => {
                   switch (statName) {
                     case 'Attack:':
                     statArea.addEventListener('click', compareAttackStats);
-                    console.log("added event listener for" + statName);
                     break;
                     case 'Defence:':
                     statArea.addEventListener('click', compareDefenceStats);
-                    console.log("added event listener for" + statName);
                     break;
                     case 'Speed:':
                     statArea.addEventListener('click', compareSpeedStats);
-                    console.log("added event listener for" + statName);
                     break;
                     case 'Stealth:':
                     statArea.addEventListener('click', compareStealthStats);
-                    console.log("added event listener for" + statName);
                     break;
                     case 'Strength:':
                     statArea.addEventListener('click', compareStrengthStats);
-                    console.log("added event listener for" + statName);
                     break;
                   }
                 }
@@ -569,11 +559,11 @@ document.addEventListener('DOMContentLoaded', () => {
           ['../images/20191102_134823.jpeg', 'Ogre Brute',          'Attack:', 8, 'Defence:', 1, 'Speed:', 1, 'Stealth:', 2, 'Strength:', 10],
           ['../images/20191102_134957.jpeg', 'Assassin',            'Attack:', 5, 'Defence:', 2, 'Speed:', 9, 'Stealth:', 9, 'Strength:', 4],
           ['../images/20191102_135026.jpeg', 'Distant Swordsman',   'Attack:', 8, 'Defence:', 8, 'Speed:', 6, 'Stealth:', 5, 'Strength:', 7],
-          ['../images/20191102_133442.jpeg', 'King\'s Horse',       'Attack:', 2, 'Defence:', 7, 'Speed:', 10, 'Stealth:', 1, 'Strength:', 7],
+          ['../images/20191102_133442.jpeg', 'King\'s Horse',       'Attack:', 2, 'Defence:', 7, 'Speed:', 9, 'Stealth:', 1, 'Strength:', 7],
           ['../images/20191102_135050.jpeg', 'Dragonsteed',         'Attack:', 2, 'Defence:', 4, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 7],
-          ['../images/20191102_134213.jpeg', 'King on Horse',       'Attack:', 8, 'Defence:', 9, 'Speed:', 10, 'Stealth:', 2, 'Strength:', 8],
-          ['../images/20191102_135115.jpeg', 'Dragon on Steed',     'Attack:', 9, 'Defence:', 7, 'Speed:', 10, 'Stealth:', 4, 'Strength:', 8],
-          ['../images/20191102_135450.jpeg', 'Royal Castle',      'Attack:', 3, 'Defence:', 10, 'Speed:', 0, 'Stealth:', 0, 'Strength:', 10]
+          ['../images/20191102_134213.jpeg', 'King on Horse',       'Attack:', 8, 'Defence:', 9, 'Speed:', 8, 'Stealth:', 2, 'Strength:', 8],
+          ['../images/20191102_135115.jpeg', 'Dragon on Steed',     'Attack:', 9, 'Defence:', 7, 'Speed:', 9, 'Stealth:', 3, 'Strength:', 8],
+          ['../images/20191102_135450.jpeg', 'Royal Castle',        'Attack:', 3, 'Defence:', 10, 'Speed:', 0, 'Stealth:', 0, 'Strength:', 10]
         ]
 
         playerCards = [];
