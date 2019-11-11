@@ -180,6 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
             playerTurn = true;
             playerCards.push(computerCards[0]);
             playerCards.push(playerCards[0]);
+            if (drawnCards.length > 0) {
+              for (i=0; i<drawnCards.length; i++) {
+                playerCards.push(drawnCards[0]);
+              }
+              drawnCards = [];
+            }
             playerCards.splice(0, 1);
             computerCards.splice(0, 1);
             if (computerCards.length == 0) {
@@ -196,11 +202,35 @@ document.addEventListener('DOMContentLoaded', () => {
             playerTurn = false;
             computerCards.push(computerCards[0]);
             computerCards.push(playerCards[0]);
+            if (drawnCards.length > 0) {
+              for (i=0; i<drawnCards.length; i++) {
+                computerCards.push(drawnCards[0]);
+              }
+              drawnCards = [];
+            }
             computerCards.splice(0, 1);
             playerCards.splice(0, 1);
             if (playerCards.length == 0) {
               clearAreas();
               centralArea.innerHTML = 'YOU LOSE!';
+            } else {
+              clearAreas();
+              playerCardCreator();
+              computerCardCreator();
+            }
+          }
+
+          roundDrawn = () => {
+            drawnCards.push(playerCards[0]);
+            drawnCards.push(computerCards[0]);
+            playerCards.splice(0, 1);
+            computerCards.splice(0, 1);
+            if (playerCards.length == 0) {
+              clearAreas();
+              centralArea.innerHTML = 'YOU LOSE!';
+            } else if (computerCards.length == 0){
+              clearAreas();
+              centralArea.innerHTML = 'YOU WIN!';
             } else {
               clearAreas();
               playerCardCreator();
@@ -220,8 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundWon, 3000);
-            }
-            if (playerAttackStat <= computerAttackStat) {
+            } else if (playerAttackStat < computerAttackStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
@@ -230,6 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundLost, 3000);
+            } else {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerAttackStat + ' drew with their ' + computerAttackStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundDrawn, 3000);
             }
           }
 
@@ -245,8 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundWon, 3000);
-            }
-            if (playerDefenceStat <= computerDefenceStat) {
+            } else if (playerDefenceStat < computerDefenceStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
@@ -255,6 +292,15 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundLost, 3000);
+            } else {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' drew with their ' + computerDefenceStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundDrawn, 3000);
             }
           }
 
@@ -270,8 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundWon, 3000);
-            }
-            if (playerSpeedStat <= computerSpeedStat) {
+            } else if (playerSpeedStat < computerSpeedStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
@@ -280,6 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundLost, 3000);
+            } else {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' drew with their ' + computerSpeedStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundDrawn, 3000);
             }
           }
 
@@ -295,8 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundWon, 3000);
-            }
-            if (playerStealthStat <= computerStealthStat) {
+            } else if (playerStealthStat < computerStealthStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
@@ -305,6 +358,15 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundLost, 3000);
+            } else {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStealthStat + ' drew with their ' + computerStealthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundDrawn, 3000);
             }
           }
 
@@ -320,8 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundWon, 3000);
-            }
-            if (playerStrengthStat <= computerStrengthStat) {
+            } else if (playerStrengthStat < computerStrengthStat) {
               if (playerTurn) {
                 removeEventListeners();
               }
@@ -330,6 +391,15 @@ document.addEventListener('DOMContentLoaded', () => {
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
               setTimeout(roundLost, 3000);
+            } else {
+              if (playerTurn) {
+                removeEventListeners();
+              }
+              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' drew with their ' + computerStrengthStat;
+              computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
+              fadeInComputerCard();
+              setTimeout(fadeOutComputerCard, 2000);
+              setTimeout(roundDrawn, 3000);
             }
           }
 
@@ -569,6 +639,8 @@ document.addEventListener('DOMContentLoaded', () => {
         playerCards = [];
 
         computerCards = [];
+
+        drawnCards = [];
 
         playerCardGenerator();
         computerCardGenerator();
