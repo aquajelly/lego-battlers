@@ -470,6 +470,7 @@ button:focus {
   width: 20%;
   height: 100%;
   font-family: monospace;
+  text-align: center;
 }
 
 .computerArea {
@@ -500,4 +501,12 @@ button:focus {
 .computerHighlightedStatFadeIn {
   background: black;
   color: white;
+}
+
+.drawnCardsTitle {
+  margin-top: 20px;
+  text-decoration: underline;
+  font-size: 120%;
+  font-weight: bold;
+  font-family: monospace;
 }
