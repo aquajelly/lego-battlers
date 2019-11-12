@@ -26,10 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       shufflingText.classList.add('hidden', 'gameText');
       gameDisplay.appendChild(shufflingText);
       setTimeout(fadeInText, 200);
-      setTimeout(fadeOutText, 1000);
-      setTimeout(removeText, 1000);
-      // setTimeout(fadeOutText, 3000);
-      // setTimeout(removeText, 4000);
+      setTimeout(fadeOutText, 3000);
+      setTimeout(removeText, 4000);
     }
 
     whoGoesFirst = () => {
@@ -58,8 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         coinFlipText.parentNode.removeChild(coinFlipText);
         coin.parentNode.removeChild(coin);
         shufflingDeckText();
-        setTimeout(gameStart, 1000);
-        // setTimeout(gameStart, 4000);
+        setTimeout(gameStart, 4000);
       }
 
       clearCoinAndTextDisplay = () => {
@@ -77,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         coin.classList.add('flippedCoin');
         coin.classList.toggle('fadeOut');
         setTimeout(coinFlipDecision, 1000);
-        setTimeout(clearCoinAndTextDisplay, 1000);
-        // setTimeout(clearCoinAndTextDisplay, 4000);
+        setTimeout(clearCoinAndTextDisplay, 4000);
       }
 
       addListenerToCoin = () => {
@@ -112,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             while (computerArea.firstChild) {
               computerArea.removeChild(computerArea.firstChild);
+            }
+            if (drawnCards.length == 0) {
+              while (centralArea.childNodes.length > 1) {
+                centralArea.removeChild(centralArea.lastChild);
+              }
             }
           }
 
@@ -221,10 +222,34 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           roundDrawn = () => {
+            if (drawnCards.length == 0) {
+              drawnCardsTitle = document.createElement('div');
+              drawnCardsTitle.className = 'drawnCardsTitle';
+              centralArea.appendChild(drawnCardsTitle);
+              drawnCardsTitle.innerHTML = "Drawn cards:";
+            }
             drawnCards.push(playerCards[0]);
             drawnCards.push(computerCards[0]);
             playerCards.splice(0, 1);
             computerCards.splice(0, 1);
+            for (i=0; i<drawnCards.length; i++) {
+              cardCreation(
+                i,
+                centralArea,
+                drawnCards[i][0],
+                drawnCards[i][1],
+                drawnCards[i][2],
+                drawnCards[i][3],
+                drawnCards[i][4],
+                drawnCards[i][5],
+                drawnCards[i][6],
+                drawnCards[i][7],
+                drawnCards[i][8],
+                drawnCards[i][9],
+                drawnCards[i][10],
+                drawnCards[i][11]
+              )
+            }
             if (playerCards.length == 0) {
               clearAreas();
               centralArea.innerHTML = 'YOU LOSE!';
@@ -245,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerAttackStat + ' beat their ' + computerAttackStat;
+              centralTextArea.innerHTML = 'Your ' + playerAttackStat + ' beat their ' + computerAttackStat;
               computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -254,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerAttackStat + ' did not beat their ' + computerAttackStat;
+              centralTextArea.innerHTML = 'Your ' + playerAttackStat + ' did not beat their ' + computerAttackStat;
               computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -263,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerAttackStat + ' drew with their ' + computerAttackStat;
+              centralTextArea.innerHTML = 'Your ' + playerAttackStat + ' drew with their ' + computerAttackStat;
               computerArea.childNodes[0].childNodes[1].childNodes[1].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -278,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' beat their ' + computerDefenceStat;
+              centralTextArea.innerHTML = 'Your ' + playerDefenceStat + ' beat their ' + computerDefenceStat;
               computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -287,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' did not beat their ' + computerDefenceStat;
+              centralTextArea.innerHTML = 'Your ' + playerDefenceStat + ' did not beat their ' + computerDefenceStat;
               computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -296,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerDefenceStat + ' drew with their ' + computerDefenceStat;
+              centralTextArea.innerHTML = 'Your ' + playerDefenceStat + ' drew with their ' + computerDefenceStat;
               computerArea.childNodes[0].childNodes[1].childNodes[2].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -311,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' beat their ' + computerSpeedStat;
+              centralTextArea.innerHTML = 'Your ' + playerSpeedStat + ' beat their ' + computerSpeedStat;
               computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -320,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' did not beat their ' + computerSpeedStat;
+              centralTextArea.innerHTML = 'Your ' + playerSpeedStat + ' did not beat their ' + computerSpeedStat;
               computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -329,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerSpeedStat + ' drew with their ' + computerSpeedStat;
+              centralTextArea.innerHTML = 'Your ' + playerSpeedStat + ' drew with their ' + computerSpeedStat;
               computerArea.childNodes[0].childNodes[1].childNodes[3].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -344,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStealthStat + ' beat their ' + computerStealthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStealthStat + ' beat their ' + computerStealthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -353,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStealthStat + ' did not beat their ' + computerStealthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStealthStat + ' did not beat their ' + computerStealthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -362,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStealthStat + ' drew with their ' + computerStealthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStealthStat + ' drew with their ' + computerStealthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[4].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -377,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' beat their ' + computerStrengthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStrengthStat + ' beat their ' + computerStrengthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -386,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' did not beat their ' + computerStrengthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStrengthStat + ' did not beat their ' + computerStrengthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -395,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (playerTurn) {
                 removeEventListeners();
               }
-              centralArea.innerHTML = 'Your ' + playerStrengthStat + ' drew with their ' + computerStrengthStat;
+              centralTextArea.innerHTML = 'Your ' + playerStrengthStat + ' drew with their ' + computerStrengthStat;
               computerArea.childNodes[0].childNodes[1].childNodes[5].classList.add('computerHighlightedStatFadeIn');
               fadeInComputerCard();
               setTimeout(fadeOutComputerCard, 2000);
@@ -423,11 +448,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
           positionSetup = () => {
             card.style.position = "absolute";
-            var overlapOffset = (playerCards.length + computerCards.length) - i;
-            var positionOffset = ((cardPosition*3) + 10) + 'px';
-            card.style.marginLeft = positionOffset;
-            card.style.marginTop = positionOffset;
-            card.style.zIndex = overlapOffset;
+            if (cardOwner != centralArea) {
+              var overlapOffset = (playerCards.length + computerCards.length) - i;
+              var positionOffset = ((cardPosition*3) + 10) + 'px';
+              card.style.marginLeft = positionOffset;
+              card.style.marginTop = positionOffset;
+              card.style.zIndex = overlapOffset;
+            } else {
+              var overlapOffset = i;
+              card.style.transform = "scale(0.3, 0.3)";
+              card.style.transformOrigin = "center center";
+              card.style.zIndex = overlapOffset;
+              if (i % 2 == 0) {
+                var positionOffset = ((10*(i+1))-70) + 'px';
+                card.style.marginLeft = "-30px";
+                card.style.marginTop = positionOffset;
+              } else {
+                var positionOffset = ((10*(i))-70) + 'px';
+                card.style.marginLeft = "60px";
+                card.style.marginTop = positionOffset;
+              }
+            }
           }
 
           imageSetup = () => {
@@ -654,10 +695,12 @@ document.addEventListener('DOMContentLoaded', () => {
       gameDisplay.appendChild(playerArea);
 
       centralArea = document.createElement('div');
+      centralTextArea = document.createElement('div');
+      centralArea.appendChild(centralTextArea);
       if (playerTurn) {
-        centralArea.innerHTML = 'You go first!';
+        centralTextArea.innerHTML = 'You go first!';
       } else {
-        centralArea.innerHTML = 'Computer goes first';
+        centralTextArea.innerHTML = 'Computer goes first';
       }
       centralArea.className = 'centralArea';
       gameDisplay.appendChild(centralArea);
