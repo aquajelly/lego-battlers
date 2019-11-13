@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         coin.classList.remove('fadeIn');
         coin.classList.add('flippedCoin');
         coin.classList.toggle('fadeOut');
-        setTimeout(coinFlipDecision, 1000);
-        setTimeout(clearCoinAndTextDisplay, 4000);
+        setTimeout(coinFlipDecision, 1500);
+        setTimeout(clearCoinAndTextDisplay, 3000);
       }
 
       addListenerToCoin = () => {
@@ -179,14 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
           roundWon = () => {
             playerTurn = true;
-            playerCards.push(computerCards[0]);
-            playerCards.push(playerCards[0]);
             if (drawnCards.length > 0) {
               for (i=0; i<drawnCards.length; i++) {
-                playerCards.push(drawnCards[0]);
+                playerCards.push(drawnCards[i]);
               }
               drawnCards = [];
             }
+            playerCards.push(computerCards[0]);
+            playerCards.push(playerCards[0]);
             playerCards.splice(0, 1);
             computerCards.splice(0, 1);
             if (computerCards.length == 0) {
@@ -201,14 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
           roundLost = () => {
             playerTurn = false;
-            computerCards.push(computerCards[0]);
-            computerCards.push(playerCards[0]);
             if (drawnCards.length > 0) {
               for (i=0; i<drawnCards.length; i++) {
-                computerCards.push(drawnCards[0]);
+                computerCards.push(drawnCards[i]);
               }
               drawnCards = [];
             }
+            computerCards.push(playerCards[0]);
+            computerCards.push(computerCards[0]);
             computerCards.splice(0, 1);
             playerCards.splice(0, 1);
             if (playerCards.length == 0) {
@@ -221,12 +221,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
 
+          fadeInDrawnCardsSection = () => {
+            drawnCardsTitle.classList.toggle('fadeIn');
+          }
+
           roundDrawn = () => {
             if (drawnCards.length == 0) {
               drawnCardsTitle = document.createElement('div');
-              drawnCardsTitle.className = 'drawnCardsTitle';
+              drawnCardsTitle.classList.add('drawnCardsTitle', 'hidden');
               centralArea.appendChild(drawnCardsTitle);
               drawnCardsTitle.innerHTML = "Drawn cards:";
+              setTimeout(fadeInDrawnCardsSection, 100);
             }
             drawnCards.push(playerCards[0]);
             drawnCards.push(computerCards[0]);
@@ -551,6 +556,10 @@ document.addEventListener('DOMContentLoaded', () => {
             statSetup(card, strength, strengthValue);
           }
 
+          fadeInDrawnCards = () => {
+            card.classList.add('fadeIn');
+          }
+
           const card = document.createElement('div');
           card.className = 'card';
 
@@ -567,7 +576,13 @@ document.addEventListener('DOMContentLoaded', () => {
           nameSetup(textArea, cardNameContent);
           statsSetup(textArea, attack, attackValue, defence, defenceValue, speed, speedValue, stealth, stealthValue, strength, strengthValue);
 
-          cardOwner.appendChild(card);
+          if (cardOwner == centralArea) {
+            card.classList.add('hidden');
+            cardOwner.appendChild(card);
+            setTimeout(fadeInDrawnCards, 100);
+          } else {
+            cardOwner.appendChild(card);
+          }
         }
 
         computerTurn = () => {
@@ -688,10 +703,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    fadeInGameDisplay = () => {
+      playerArea.classList.toggle('fadeIn');
+      centralArea.classList.toggle('fadeIn');
+      computerArea.classList.toggle('fadeIn');
+    }
 
     gameStart = () => {
       playerArea = document.createElement('div');
-      playerArea.className = 'playerArea';
+      playerArea.classList.add('playerArea', 'hidden');
       gameDisplay.appendChild(playerArea);
 
       centralArea = document.createElement('div');
@@ -702,14 +722,14 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         centralTextArea.innerHTML = 'Computer goes first';
       }
-      centralArea.className = 'centralArea';
+      centralArea.classList.add('centralArea', 'hidden');
       gameDisplay.appendChild(centralArea);
 
       computerArea = document.createElement('div');
-      computerArea.className = 'computerArea';
+      computerArea.classList.add('computerArea', 'hidden');
       gameDisplay.appendChild(computerArea);
       generateCards();
-
+      setTimeout(fadeInGameDisplay, 100);
     }
 
     beginButton.className = 'beginButtonWithoutHover buttonFadeOut';
