@@ -110,10 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
               computerArea.removeChild(computerArea.firstChild);
             }
             if (drawnCards.length == 0) {
-              while (centralArea.childNodes.length > 1) {
+              while (centralArea.childNodes.length > 2) {
                 centralArea.removeChild(centralArea.lastChild);
               }
             }
+            gameTurn++;
+            turnDisplayArea.innerHTML = 'Round: ' + gameTurn;
           }
 
           fadeInComputerCard = () => {
@@ -177,13 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
             computerArea.childNodes[0].childNodes[1].childNodes[5].childNodes[1].classList.toggle('fadeOut');
           }
 
+          clearDrawnCardsArea = () => {
+            centralArea.removeChild(drawnCardsArea);
+            drawnCards = [];
+          }
+
           roundWon = () => {
             playerTurn = true;
             if (drawnCards.length > 0) {
               for (i=0; i<drawnCards.length; i++) {
                 playerCards.push(drawnCards[i]);
               }
-              drawnCards = [];
+              drawnCardsArea.classList.toggle('fadeIn');
+              drawnCardsArea.classList.toggle('fadeOut');
+              setTimeout(clearDrawnCardsArea, 1000);
             }
             playerCards.push(computerCards[0]);
             playerCards.push(playerCards[0]);
@@ -205,7 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
               for (i=0; i<drawnCards.length; i++) {
                 computerCards.push(drawnCards[i]);
               }
-              drawnCards = [];
+              drawnCardsArea.classList.toggle('fadeIn');
+              drawnCardsArea.classList.toggle('fadeOut');
+              setTimeout(clearDrawnCardsArea, 1000);
             }
             computerCards.push(playerCards[0]);
             computerCards.push(computerCards[0]);
@@ -222,15 +233,20 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           fadeInDrawnCardsSection = () => {
-            drawnCardsTitle.classList.toggle('fadeIn');
+            drawnCardsArea.classList.toggle('fadeIn');
           }
 
           roundDrawn = () => {
             if (drawnCards.length == 0) {
               drawnCardsTitle = document.createElement('div');
-              drawnCardsTitle.classList.add('drawnCardsTitle', 'hidden');
-              centralArea.appendChild(drawnCardsTitle);
+              drawnCardsTitle.classList.add('drawnCardsTitle');
               drawnCardsTitle.innerHTML = "Drawn cards:";
+
+              drawnCardsArea = document.createElement('div');
+              drawnCardsArea.classList.add('hidden');
+
+              drawnCardsArea.appendChild(drawnCardsTitle);
+              centralArea.appendChild(drawnCardsArea);
               setTimeout(fadeInDrawnCardsSection, 100);
             }
             drawnCards.push(playerCards[0]);
@@ -255,7 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 drawnCards[i][11]
               )
             }
-            if (playerCards.length == 0) {
+            if (playerCards.length == 0 && computerCards.length == 0) {
+              clearAreas();
+              centralArea.innerHTML = 'IT\'S A DRAW!';
+            } else if (playerCards.length == 0) {
               clearAreas();
               centralArea.innerHTML = 'YOU LOSE!';
             } else if (computerCards.length == 0){
@@ -453,11 +472,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
           positionSetup = () => {
             card.style.position = "absolute";
-            if (cardOwner != centralArea) {
-              var overlapOffset = (playerCards.length + computerCards.length) - i;
-              var positionOffset = ((cardPosition*3) + 10) + 'px';
-              card.style.marginLeft = positionOffset;
-              card.style.marginTop = positionOffset;
+            var overlapOffset = (playerCards.length + computerCards.length) - i;
+            var verticalOffset = ((cardPosition*3) + 10) + 'px';
+            if (cardOwner == playerArea) {
+              var horizontalOffset = ((cardPosition*8) + 10) + 'px';
+              card.style.marginLeft = horizontalOffset;
+              card.style.marginTop = verticalOffset;
+              card.style.zIndex = overlapOffset;
+            } else if (cardOwner == computerArea) {
+              var horizontalOffset = (264 - (cardPosition*8) - 10) + 'px';
+              card.style.marginLeft = horizontalOffset;
+              card.style.marginTop = verticalOffset;
               card.style.zIndex = overlapOffset;
             } else {
               var overlapOffset = i;
@@ -465,11 +490,11 @@ document.addEventListener('DOMContentLoaded', () => {
               card.style.transformOrigin = "center center";
               card.style.zIndex = overlapOffset;
               if (i % 2 == 0) {
-                var positionOffset = ((10*(i+1))-70) + 'px';
+                var positionOffset = ((10*(i+1))-100) + 'px';
                 card.style.marginLeft = "-30px";
                 card.style.marginTop = positionOffset;
               } else {
-                var positionOffset = ((10*(i))-70) + 'px';
+                var positionOffset = ((10*(i))-100) + 'px';
                 card.style.marginLeft = "60px";
                 card.style.marginTop = positionOffset;
               }
@@ -578,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (cardOwner == centralArea) {
             card.classList.add('hidden');
-            cardOwner.appendChild(card);
+            drawnCardsArea.appendChild(card);
             setTimeout(fadeInDrawnCards, 100);
           } else {
             cardOwner.appendChild(card);
@@ -607,6 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         playerCardCreator = () => {
+          turnDisplayArea.innerHTML = 'Round: ' + gameTurn;
           for (i=0; i<playerCards.length; i++) {
             cardCreation(
               i,
@@ -647,7 +673,11 @@ document.addEventListener('DOMContentLoaded', () => {
             )
           }
           if (playerTurn == false) {
-            setTimeout(computerTurn, 1000);
+            if (gameTurn == 1) {
+              setTimeout(computerTurn, 2000);
+            } else {
+              setTimeout(computerTurn, 1000);
+            }
           }
         }
 
@@ -710,19 +740,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     gameStart = () => {
+      gameTurn = 1;
       playerArea = document.createElement('div');
       playerArea.classList.add('playerArea', 'hidden');
       gameDisplay.appendChild(playerArea);
 
       centralArea = document.createElement('div');
+      centralArea.classList.add('centralArea', 'hidden');
+      turnDisplayArea = document.createElement('div');
+      turnDisplayArea.classList.add('turnDisplayArea');
+      centralArea.appendChild(turnDisplayArea);
       centralTextArea = document.createElement('div');
+      centralTextArea.classList.add('centralTextArea');
       centralArea.appendChild(centralTextArea);
       if (playerTurn) {
         centralTextArea.innerHTML = 'You go first!';
       } else {
         centralTextArea.innerHTML = 'Computer goes first';
       }
-      centralArea.classList.add('centralArea', 'hidden');
       gameDisplay.appendChild(centralArea);
 
       computerArea = document.createElement('div');
