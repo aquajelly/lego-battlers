@@ -127,6 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
   cardCreation('../images/20191102_134213.jpeg', 'King on Horse', 8, 9, 8, 2, 8);
   cardCreation('../images/20191102_135115.jpeg', 'Dragon on Steed', 9, 7, 9, 3, 8);
   cardCreation('../images/20191102_135450.jpeg', 'Royal Castle', 3, 10, 0, 0, 10);
+  cardCreation('../images/20191201_172415.jpeg', 'The Gentleman', 9, 4, 7, 9, 6);
+  cardCreation('../images/20191201_172442.jpeg', 'The Red Wizard', 10, 2, 5, 4, 6);
+  cardCreation('../images/20191201_172510.jpeg', 'The Werewolf', 8, 3, 8, 2, 8);
+  cardCreation('../images/20191201_172553.jpeg', 'Warrior Dwarf', 6, 4, 5, 8, 6);
+  cardCreation('../images/20191201_172622.jpeg', 'Skeleton Soldier', 6, 1, 8, 7, 2);
+  cardCreation('../images/20191201_172718.jpeg', 'Skeleton King', 6, 4, 8, 5, 3);
+  cardCreation('../images/20191201_172626.jpeg', 'The Mummy', 7, 4, 4, 6, 6);
+  cardCreation('../images/20191201_172633.jpeg', 'Desert Soldier', 8, 6, 7, 5, 7);
+  cardCreation('../images/20191201_172756.jpeg', 'Desert Warrior', 9, 8, 7, 6, 8);
+  cardCreation('../images/20191201_172642.jpeg', 'Desert Knight', 9, 7, 6, 6, 8);
+  cardCreation('../images/20191201_172702.jpeg', 'Desert Gladiator', 10, 9, 4, 3, 9);
+  cardCreation('../images/20191201_172748.jpeg', 'Desert Emperor', 5, 4, 7, 7, 5);
 
   const content = document.querySelector('.content');
   const homeButton = document.querySelector('.homepage')
